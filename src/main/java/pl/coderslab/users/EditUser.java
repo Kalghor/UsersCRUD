@@ -19,7 +19,6 @@ public class EditUser extends HttpServlet {
         request.setAttribute("oldName",user.getUserName());
         request.setAttribute("oldEmail",user.getEmail());
         getServletContext().getRequestDispatcher("/user/editUser.jsp").forward(request, response);
-//        response.sendRedirect("/user/editUser.jsp");
     }
 
     @Override
