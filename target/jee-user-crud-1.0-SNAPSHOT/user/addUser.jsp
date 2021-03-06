@@ -16,11 +16,16 @@
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nazwa</label>
                         <input type="text" name="userName" class="form-control" id="formGroupExampleInput" placeholder="Nazwa użytkownika">
+
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
                         <input type="email" name="userEmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email użytkownika">
-                    </div>
+                        <c:if test="${email_faild != null}">
+                        <div class="alert alert-danger" role="alert">
+                                ${email_faild}
+                        </div>
+                        </c:if>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Hasło</label>
                         <input type="password" name="userPassword" class="form-control" id="exampleInputPassword1" placeholder="Hasło użytkownika">

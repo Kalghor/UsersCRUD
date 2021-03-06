@@ -78,8 +78,8 @@ public class UserDao extends User{
     }
 
     public void update(User user) {
-        if (isExist(user)) {
-            int id = user.getId();
+        int id = user.getId();
+        if (isExist(id)) {
             String username = user.getUserName();
             String email = user.getEmail();
             String password = user.getPassword();
