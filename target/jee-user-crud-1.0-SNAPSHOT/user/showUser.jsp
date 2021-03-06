@@ -10,27 +10,31 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Lista użytkowników</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Szczegóły użytkownika</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+            <table class="table">
+                <tbody>
                 <tr>
-                    <th>Id</th>
-                    <th>Nazwa użytkownika</th>
-                    <th>Email</th>
-                    <th>Akcja</th>
+                    <th scope="row">Id</th>
+                    <td>${id}</td>
+                    <td></td>
+                    <td></td>
                 </tr>
-                </thead>
-                <tfoot>
                 <tr>
-                    <td>1</td>
-                    <td>kalghor</td>
-                    <td>kalghor@gmail.com</td>
-                    <td>Edycja Usun Pokaż</td>
+                    <th scope="row">Nazwa użytkownika</th>
+                    <td>${name}</td>
+                    <td></td>
+                    <td></td>
                 </tr>
-                </tfoot>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>${email}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
             </table>
         </div>
     </div>
