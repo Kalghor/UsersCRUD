@@ -12,7 +12,7 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <form action="/user/add" method="post">
+                <form action="/users/add" method="post">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nazwa</label>
                         <input type="text" name="userName" class="form-control" id="formGroupExampleInput" placeholder="Nazwa użytkownika">

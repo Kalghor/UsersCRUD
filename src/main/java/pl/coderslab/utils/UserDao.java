@@ -66,9 +66,9 @@ public class UserDao extends User{
                     user.toString();
                     return user;
                 } else {
-                    if (!resultSet.next()) {
-                        System.out.println("Rekord nie istnieje w bazie");
-                    }
+//                    if (resultSet.last()) {
+//                        System.out.println("Rekord nie istnieje w bazie");
+//                    }
                 }
             }
         } catch (SQLException throwables) {
@@ -78,7 +78,7 @@ public class UserDao extends User{
     }
 
     public void update(User user) {
-        if (!isExist(user)) {
+        if (isExist(user)) {
             int id = user.getId();
             String username = user.getUserName();
             String email = user.getEmail();
@@ -94,7 +94,7 @@ public class UserDao extends User{
                 throwables.printStackTrace();
             }
         } else {
-            System.out.println("Taki uzytwnik juz istnieje w bazie");
+            System.out.println("Taki uzytwnik nie istnieje w bazie");
         }
     }
 

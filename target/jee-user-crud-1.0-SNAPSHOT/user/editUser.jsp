@@ -12,20 +12,20 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <form>
+                <form action="/users/edit" method="post">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nazwa</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput">
+                        <input name="userName" type="text" class="form-control" id="formGroupExampleInput" value="${oldName}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input name="userEmail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="${oldEmail}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Hasło</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło użytkownika">
+                        <input name="userPassword" type="password" class="form-control" id="exampleInputPassword1" value="Hasło użytkownika">
                     </div>
-                    <button type="submit" class="btn btn-primary">Edycja</button>
+                    <button type="submit" name="id" value="${id}" class="btn btn-primary">Edycja</button>
                 </form>
             </table>
         </div>

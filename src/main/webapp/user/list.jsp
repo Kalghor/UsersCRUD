@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="header.jsp" %>
 
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+<a href="/user/addUser.jsp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Dodaj użytkownika</a>
 </div>
 
@@ -24,12 +24,15 @@
                 </tr>
                 </thead>
                 <tfoot>
-                <tr>
-                    <td>1</td>
-                    <td>kalghor</td>
-                    <td>kalghor@gmail.com</td>
-                    <td>Edycja Usun Pokaż</td>
-                </tr>
+                <c:forEach var="user" items="${allUsers}">
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.userName}</td>
+                        <td>${user.email}</td>
+                        <td><a href='<c:url value="/users/edit?id=${user.id}"/>'>Edytuj</a> Usun Pokaż</td>
+
+                    </tr>
+                </c:forEach>
                 </tfoot>
             </table>
         </div>

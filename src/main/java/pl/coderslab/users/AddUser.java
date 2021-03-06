@@ -11,27 +11,21 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet("/user/add")
+@WebServlet("/users/add")
 public class AddUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        getServletContext().getRequestDispatcher("/user/addUser.jsp").forward(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Connection connection;
-        try {
-            connection = DbUtil.getConnection();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
         String userName = request.getParameter("userName");
         String userEmail = request.getParameter("userEmail");
         String userPassword = request.getParameter("userPassword");
         UserDao userDao = new UserDao();
-        User user = new User(userName,userEmail,userPassword);
-        user = userDao.addUserToDB(user);
-        getServletContext().getRequestDispatcher("/user/list.jsp").forward(request, response);
+        User user = new User(userName, userEmail, userPassword);
+        userDao.addUserToDB(user);
+        response.sendRedirect("/users/list");
     }
 }
