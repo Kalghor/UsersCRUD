@@ -6,6 +6,7 @@ import java.util.Arrays;
 public class UserDao extends User{
     private static final String CREATE_USER_QUERY = "INSERT INTO users(username, email, password) VALUES (?,?,?)";
     private static final String allFromUsers = "SELECT * FROM users";
+    private static final String READ_SINGLE_USER_QUERY = "SELECT * FROM users WHERE username = ?";
     private static final String UPDATE_USER_QUERY = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
     private static final String DELETE_USER_QUERY = "DELETE FROM users WHERE id = ?";
 
@@ -39,8 +40,8 @@ public class UserDao extends User{
 
     private void getExistingUser(User user) {
         try (Connection connection = DbUtil.getConnection()) {
-            Statement stm = connection.createStatement();
-            ResultSet resultSet = stm.executeQuery(allFromUsers);
+            PreparedStatement stm = connection.prepareStatement(READ_SINGLE_USER_QUERY);
+            ResultSet resultSet = stm.executeQuery();
             while (resultSet.next()) {
                 if (user.getEmail().equals(resultSet.getString("email"))) {
                     user.setId(resultSet.getInt("id"));
@@ -54,8 +55,8 @@ public class UserDao extends User{
     public User read(int userID) {
         User user = new User();
         try (Connection connection = DbUtil.getConnection()) {
-            Statement stm = connection.createStatement();
-            ResultSet resultSet = stm.executeQuery(allFromUsers);
+            PreparedStatement stm = connection.prepareStatement(READ_SINGLE_USER_QUERY);
+            ResultSet resultSet = stm.executeQuery();
             while (resultSet.next()) {
                 String index = resultSet.getString("id");
                 if (index.equals(String.valueOf(userID))) {
@@ -65,10 +66,6 @@ public class UserDao extends User{
                     user.setPassword(resultSet.getString("password"));
                     user.toString();
                     return user;
-                } else {
-//                    if (resultSet.last()) {
-//                        System.out.println("Rekord nie istnieje w bazie");
-//                    }
                 }
             }
         } catch (SQLException throwables) {
@@ -142,8 +139,9 @@ public class UserDao extends User{
     public Boolean isExist(User user) {
         boolean result = false;
         try (Connection connection = DbUtil.getConnection()) {
-            Statement stm = connection.createStatement();
-            ResultSet resultSet = stm.executeQuery(allFromUsers);
+            PreparedStatement stm = connection.prepareStatement(READ_SINGLE_USER_QUERY);
+            stm.setString(1,user.getUserName());
+            ResultSet resultSet = stm.executeQuery();
             while (resultSet.next()) {
                 if (user.getEmail().equals(resultSet.getString("email"))) {
                     result = true;
@@ -169,10 +167,6 @@ public class UserDao extends User{
             throwables.printStackTrace();
         }
         return result;
-    }
-
-    public UserDao(String userName, String email, String password) {
-        super(userName, email, password);
     }
 
     public String hashPassword(String password) {
