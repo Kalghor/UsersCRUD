@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="header.jsp" %>
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+<a href="/users/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
         class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>
 </div>
 <!-- DataTales Example -->

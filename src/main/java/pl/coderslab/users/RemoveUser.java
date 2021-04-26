@@ -16,7 +16,6 @@ public class RemoveUser extends HttpServlet {
         UserDao userDao = new UserDao();
         userDao.delete(id);
         response.sendRedirect("/users/list");
-
     }
 
     @Override

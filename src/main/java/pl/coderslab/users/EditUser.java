@@ -25,7 +25,6 @@ public class EditUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDao userDao = new UserDao();
         String id = request.getParameter("id");
-//        User user = userDao.read(Integer.parseInt(id));
         String userName = request.getParameter("userName");
         String userEmail = request.getParameter("userEmail");
         String userPassword = request.getParameter("userPassword");

@@ -7,6 +7,7 @@ public class UserDao extends User{
     private static final String CREATE_USER_QUERY = "INSERT INTO users(username, email, password) VALUES (?,?,?)";
     private static final String allFromUsers = "SELECT * FROM users";
     private static final String READ_SINGLE_USER_QUERY = "SELECT * FROM users WHERE username = ?";
+    private static final String READ_SINGLE_USER_BY_ID_QUERY = "SELECT * FROM users WHERE id = ?";
     private static final String UPDATE_USER_QUERY = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
     private static final String DELETE_USER_QUERY = "DELETE FROM users WHERE id = ?";
 
@@ -55,7 +56,8 @@ public class UserDao extends User{
     public User read(int userID) {
         User user = new User();
         try (Connection connection = DbUtil.getConnection()) {
-            PreparedStatement stm = connection.prepareStatement(READ_SINGLE_USER_QUERY);
+            PreparedStatement stm = connection.prepareStatement(READ_SINGLE_USER_BY_ID_QUERY);
+            stm.setInt(1,userID);
             ResultSet resultSet = stm.executeQuery();
             while (resultSet.next()) {
                 String index = resultSet.getString("id");
