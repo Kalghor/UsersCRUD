@@ -5,14 +5,20 @@ public class User {
     private String userName;
     private String email;
     private String password;
-    // zastanowic sie jak zmienic id zeby bylo wieksze od 0 (zaciagniete z bazy)
+
+    public User(String userName, String email, String password){
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
+    public User(){}
+
     public void setId(int id) {
         this.id = id;
     }
     public void setUserName(String userName){
         this.userName = userName;
     }
-    //poszukac walidacji emaila
     public void setEmail(String email){
         this.email = email;
     }
@@ -30,7 +36,6 @@ public class User {
     public String getEmail(){
         return email;
     }
-    //zastanowic sie czy geter do hasla zostaje
     public String getPassword(){
         return password;
     }
@@ -41,11 +46,4 @@ public class User {
         System.out.println(result);
         return result;
     }
-
-    public User(String userName, String email, String password){
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-    }
-    public User(){}
 }
